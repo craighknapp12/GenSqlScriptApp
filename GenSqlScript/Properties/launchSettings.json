@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "genSqlScript": {
+      "commandName": "Project",
+      "commandLineArgs": ".\\schema.json .\\test.sql"
+    }
+  }
+}

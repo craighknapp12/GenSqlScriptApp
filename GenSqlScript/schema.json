@@ -1,0 +1,79 @@
+{
+  "DatabaseName": "TestOrders",
+  "Tables": [
+    {
+      "Name": "Customer",
+      "Columns": [
+        {
+          "Name": "Id",
+          "PrimaryKey": true,
+          "DataType": "int"
+        },
+        {
+          "Name": "Name",
+          "DataType": "nvarchar",
+          "Length": 100
+        }
+      ]
+    },
+    {
+      "Name": "Order",
+      "Columns": [
+        {
+          "Name": "Id",
+          "PrimaryKey": true,
+          "DataType": "int"
+        },
+        {
+          "Name": "Date",
+          "DataType": "datetime"
+        },
+        {
+          "Name": "Total",
+          "DataType": "money"
+        },
+        {
+          "Name": "CustomerId",
+          "DataType": "int"
+        }
+      ]
+    },
+    {
+      "Name": "OrderLine",
+      "Columns": [
+        {
+          "Name": "Id",
+          "PrimaryKey": true,
+          "DataType": "int"
+        },
+        {
+          "Name": "ProductId",
+          "DataType": "int"
+        },
+        {
+          "Name": "Quantity",
+          "DataType": "smallint"
+        },
+        {
+          "Name": "Price",
+          "DataType": "money"
+        }
+      ]
+    },
+    {
+      "Name": "Product",
+      "Columns": [
+        {
+          "Name": "Id",
+          "PrimaryKey": true,
+          "DataType": "int"
+        },
+        {
+          "Name": "Name",
+          "DataType": "nvarchar",
+          "Length": 100
+        }
+      ]
+    }
+  ]
+}
