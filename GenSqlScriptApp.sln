@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "genSqlScript", "genSqlScript\genSqlScript.csproj", "{C13F7727-A146-4D8E-ABBA-ED877E9C8E84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenSqlScript", "GenSqlScript\GenSqlScript.csproj", "{C13F7727-A146-4D8E-ABBA-ED877E9C8E84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

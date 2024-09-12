@@ -1,5 +1,5 @@
 ﻿public class Rootobject
 {
-    public string DatabaseName { get; set; }
-    public Table[] Tables { get; set; }
+    public required string DatabaseName { get; set; }
+    public required Table[] Tables { get; set; }
 }

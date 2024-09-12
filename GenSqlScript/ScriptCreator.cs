@@ -17,30 +17,32 @@ public class ScriptCreator : IScriptCreator
         {
             var inFileData = JsonSerializer.Deserialize<Rootobject>(File.ReadAllText(inFile));
             var sb = new StringBuilder();
-
-            ParseRootObject(inFileData, sb);
-            File.WriteAllText(outFile, sb.ToString());
-            return 0;
+            if (inFileData != null)
+            {
+                ParseRootObject(inFileData, sb);
+                File.WriteAllText(outFile, sb.ToString());
+                return 0;
+            }
         }
 
         return -1;
     }
 
-    private void ParseRootObject(Rootobject? inFileData, StringBuilder sb)
+    private void ParseRootObject(Rootobject inFileData, StringBuilder sb)
     {
         sb.AppendLine("USE [master]");
         sb.AppendLine("GO\n");
-        sb.AppendLine($"DROP DATABASE [{inFileData?.DatabaseName}]");
+        sb.AppendLine($"DROP DATABASE [{inFileData.DatabaseName}]");
         sb.AppendLine("GO\n");
-        sb.AppendLine($"CREATE DATABASE [{inFileData?.DatabaseName}]");
+        sb.AppendLine($"CREATE DATABASE [{inFileData.DatabaseName}]");
         sb.AppendLine("CONTAINMENT = NONE");
         sb.AppendLine("ON PRIMARY");
-        sb.AppendLine($" ( NAME = N'{inFileData?.DatabaseName}', FILENAME = N'C:\\Program Files\\Microsoft SQL Server\\MSSQL16.MSSQLSERVER\\MSSQL\\DATA\\{inFileData?.DatabaseName}.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )");
+        sb.AppendLine($" ( NAME = N'{inFileData.DatabaseName}', FILENAME = N'C:\\Program Files\\Microsoft SQL Server\\MSSQL16.MSSQLSERVER\\MSSQL\\DATA\\{inFileData.DatabaseName}.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )");
         sb.AppendLine(" LOG ON");
-        sb.AppendLine($" ( NAME = N'{inFileData?.DatabaseName}_log', FILENAME = N'C:\\Program Files\\Microsoft SQL Server\\MSSQL16.MSSQLSERVER\\MSSQL\\DATA\\{inFileData?.DatabaseName}_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )");
+        sb.AppendLine($" ( NAME = N'{inFileData.DatabaseName}_log', FILENAME = N'C:\\Program Files\\Microsoft SQL Server\\MSSQL16.MSSQLSERVER\\MSSQL\\DATA\\{inFileData.DatabaseName}_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )");
         sb.AppendLine("WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF");
         sb.AppendLine("GO\n");
-        sb.AppendLine($"use [{inFileData?.DatabaseName}]");
+        sb.AppendLine($"use [{inFileData.DatabaseName}]");
         sb.AppendLine("GO\n");
 
         foreach (var t in inFileData.Tables)

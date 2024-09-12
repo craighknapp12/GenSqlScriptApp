@@ -1,5 +1,5 @@
 ﻿public class Table
 {
-    public string Name { get; set; }
-    public Column[] Columns { get; set; }
+    public required string Name { get; set; }
+    public required Column[] Columns { get; set; }
 }

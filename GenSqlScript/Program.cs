@@ -6,7 +6,6 @@ try
 {
     var config = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
-        .AddCommandLine(args)
         .Build();
 
     var host = Host.CreateDefaultBuilder()
